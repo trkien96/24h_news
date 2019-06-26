@@ -16,7 +16,7 @@
                     <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Danh Sách<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thể loại<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="admin/theloai/danhsach">Danh sách thể loại</a>
@@ -28,25 +28,37 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-cube fa-fw"></i> Loại tin<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">List Product</a>
+                            <a href="admin/loaitin/danhsach">Danh sách loại tin</a>
                         </li>
                         <li>
-                            <a href="#">Add Product</a>
+                            <a href="admin/loaitin/them">Thêm loại tin</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-users fa-fw"></i> Thành Viên<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-cube fa-fw"></i> Tin tức<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">Danh Sách Thành Viên</a>
+                            <a href="admin/tintuc/danhsach">Danh sách tin</a>
                         </li>
                         <li>
-                            <a href="#">Add User</a>
+                            <a href="admin/tintuc/them">Thêm tin</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> Thành viên<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="admin/user/danhsach">Danh sách thành viên</a>
+                        </li>
+                        <li>
+                            <a href="admin/user/them">Thêm thành viên</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->

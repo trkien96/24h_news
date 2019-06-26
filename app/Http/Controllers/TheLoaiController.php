@@ -14,11 +14,6 @@ class TheLoaiController extends Controller
         return view('admin.theloai.danhsach',['theloai'=>$theloai]);
     }
 
-    public function getSua()
-    {
-        return view('admin.theloai.sua');
-    }
-
     public function getThem()
     {
         return view('admin.theloai.them');
@@ -27,9 +22,10 @@ class TheLoaiController extends Controller
     public function postThem(Request $request)
     {
         $this->validate($request,[
-            'TenTL' => 'required|min:3|max:100'
+            'TenTL' => 'required|unique:TheLoai,Ten|min:3|max:100'
         ],[
             'TenTL.required' => 'Bạn phải nhập tên thể loại',
+            'TenTL.unique' => 'Tên thể loại đã tồn tại',
             'TenTL.min' => 'Tên thể loại có độ dài từ 3 đến 100 ký tự',
             'TenTL.max' => 'Tên thể loại có độ dài từ 3 đến 100 ký tự',
         ]);
@@ -39,5 +35,37 @@ class TheLoaiController extends Controller
         $theloai->TenKhongDau = changeTitle($request->TenTL);
         $theloai->save();
         return redirect('admin/theloai/them')->with('thongbao','Thêm thể loại thành công');
+    }
+
+    public function getSua($id)
+    {
+        $theloai = TheLoai::find($id);
+        return view('admin.theloai.sua',['theloai'=>$theloai]);
+    }
+
+    public function postSua(Request $request,$id)
+    {
+        $theloai = TheLoai::find($id);
+        $this->validate($request,
+        [
+            'TenTL' => 'required|unique:TheLoai,Ten|min:3|max:100'
+        ],
+        [
+            'TenTL.required' => 'Bạn phải nhập tên thể loại',
+            'TenTL.unique' => 'Tên thể loại đã tồn tại',
+            'TenTL.min' => 'Tên thể loại có độ dài từ 3 đến 100 ký tự',
+            'TenTL.max' => 'Tên thể loại có độ dài từ 3 đến 100 ký tự',
+        ]);
+        $theloai->Ten = $request->TenTL;
+        $theloai->TenKhongDau = changeTitle($request->TenTL);
+        $theloai->save();
+        return redirect('admin/theloai/sua/'.$id)->with('thongbao','Sửa thể loại thành công');
+    }
+
+    public function getXoa($id)
+    {
+        $theloai = TheLoai::find($id);
+        $theloai->delete();
+        return redirect('admin/theloai/danhsach');
     }
 }
