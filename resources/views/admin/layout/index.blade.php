@@ -64,7 +64,9 @@
     });
 </script>
 
+<script src="ckeditor/ckeditor.js"></script>
 @yield('script')
+
 </body>
 
 </html>

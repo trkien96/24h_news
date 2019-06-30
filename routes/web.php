@@ -41,6 +41,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('sua/{id}','TinTucController@postSua');
         Route::get('xoa/{id}','TinTucController@getXoa');
     });
+    Route::group(['prefix' => 'comment'], function () {
+        Route::get('xoa/{id}/{idTinTuc}','CommentController@getXoa');
+    });
     Route::group(['prefix' => 'user'], function () {
         Route::get('danhsach','UserController@getDanhSach');
         Route::get('sua','UserController@getSua');
@@ -50,5 +53,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('danhsach','SlideController@getDanhSach');
         Route::get('sua','SlideController@getSua');
         Route::get('them','SlideController@getThem');
+    });
+    Route::group(['prefix' => 'ajax'], function () {
+        Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
     });
 });
