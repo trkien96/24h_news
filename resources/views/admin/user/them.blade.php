@@ -6,40 +6,49 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">User
-                        <small>Add</small>
-                    </h1>
+                    <h1 class="page-header">Thêm thành viên</h1>
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-                    <form action="" method="POST">
+                    <form action="admin/user/them" method="POST">
+                        @if (session('thongbao'))
+                            <div class="alert alert-success">{{session('thongbao')}}</div>
+                        @endif
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}
+                                @endforeach
+                            </div>
+                        @endif
+                        {{csrf_field()}}
                         <div class="form-group">
-                            <label>Username</label>
-                            <input class="form-control" name="txtUser" placeholder="Please Enter Username" />
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" />
-                        </div>
-                        <div class="form-group">
-                            <label>RePassword</label>
-                            <input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword" />
+                            <label>Họ tên</label>
+                            <input class="form-control" name="name" placeholder="Nhập họ tên" />
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="txtEmail" placeholder="Please Enter Email" />
+                            <input type="email" class="form-control" name="email" placeholder="Nhập email" />
                         </div>
                         <div class="form-group">
-                            <label>User Level</label>
+                            <label>Mật khẩu</label>
+                            <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu" />
+                        </div>
+                        <div class="form-group">
+                            <label>Nhập lại mật khẩu</label>
+                            <input type="password" class="form-control" name="re-password" placeholder="Nhập lại mật khẩu" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phân quyền</label>
                             <label class="radio-inline">
-                                <input name="rdoLevel" value="1" checked="" type="radio">Admin
+                                <input name="level" value="1"  type="radio">Admin
                             </label>
                             <label class="radio-inline">
-                                <input name="rdoLevel" value="2" type="radio">Member
+                                <input name="level" value="0" type="radio">Member
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-default">User Add</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
+                        <button type="submit" class="btn btn-default">Thêm user</button>
+                        <button type="reset" class="btn btn-default">Làm mới</button>
                         </form>
                 </div>
             </div>

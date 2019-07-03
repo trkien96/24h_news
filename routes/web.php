@@ -13,8 +13,12 @@
 use App\TheLoai;
 //Route mặc định
 Route::get('/', function () {
-    return view('login');
+    return view('admin/login');
 });
+
+Route::get('admin/dangnhap','UserController@getDangnhapAdmin');
+Route::post('admin/dangnhap','UserController@postDangnhapAdmin');
+Route::get('admin/dangxuat','UserController@getDangxuatAdmin');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'theloai'], function () {
@@ -44,17 +48,26 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'comment'], function () {
         Route::get('xoa/{id}/{idTinTuc}','CommentController@getXoa');
     });
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('danhsach','UserController@getDanhSach');
-        Route::get('sua','UserController@getSua');
-        Route::get('them','UserController@getThem');
-    });
     Route::group(['prefix' => 'slide'], function () {
         Route::get('danhsach','SlideController@getDanhSach');
-        Route::get('sua','SlideController@getSua');
         Route::get('them','SlideController@getThem');
+        Route::post('them','SlideController@postThem');
+        Route::get('sua/{id}','SlideController@getSua');
+        Route::post('sua/{id}','SlideController@postSua');
+        Route::get('xoa/{id}','SlideController@getXoa');
+    });
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('danhsach','UserController@getDanhSach');
+        Route::get('them','UserController@getThem');
+        Route::post('them','UserController@postThem');
+        Route::get('sua/{id}','UserController@getSua');
+        Route::post('sua/{id}','UserController@postSua');
+        Route::get('xoa/{id}','UserController@getXoa');
     });
     Route::group(['prefix' => 'ajax'], function () {
         Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
     });
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

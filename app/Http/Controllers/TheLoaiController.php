@@ -34,7 +34,7 @@ class TheLoaiController extends Controller
         $theloai->Ten = $request->TenTL;
         $theloai->TenKhongDau = changeTitle($request->TenTL);
         $theloai->save();
-        return redirect('admin/theloai/them')->with('thongbao','Thêm thể loại thành công');
+        return back()->with('thongbao','Thêm thể loại thành công');
     }
 
     public function getSua($id)
@@ -59,7 +59,7 @@ class TheLoaiController extends Controller
         $theloai->Ten = $request->TenTL;
         $theloai->TenKhongDau = changeTitle($request->TenTL);
         $theloai->save();
-        return redirect('admin/theloai/sua/'.$id)->with('thongbao','Sửa thể loại thành công');
+        return back()->with('thongbao','Sửa thể loại thành công');
     }
 
     public function getXoa($id)

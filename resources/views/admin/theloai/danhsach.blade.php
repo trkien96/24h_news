@@ -1,6 +1,9 @@
 @extends('admin.layout.index')
 
 @section('content')
+    @if(isset($user_login))
+        {{$user_login}}
+    @endif
     <!-- Page Content -->
     <div id="page-wrapper">
         <div class="container-fluid">

@@ -112,6 +112,7 @@ class TinTucController extends Controller
         $tintuc->idLoaiTin = $request->LoaiTin;
         if($request->hasFile('Hinh'))
         {
+            unlink("upload/tintuc/".$tintuc->Hinh);
             $file = $request->file('Hinh');
             $name = $file->getClientOriginalName();
             $type_image = $file->getClientOriginalExtension();
@@ -125,8 +126,8 @@ class TinTucController extends Controller
             {
                 $hinh = str_random(4)."_".$name;
             }
+
             $file->move('upload/tintuc',$hinh);
-            unlink("upload/tintuc/".$tintuc->Hinh);
             $tintuc->Hinh = $hinh;
         }
         $tintuc->save();
