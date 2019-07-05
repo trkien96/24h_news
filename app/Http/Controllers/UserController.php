@@ -31,6 +31,8 @@ class UserController extends Controller
         ]);
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
         {
+            $username =Auth::user()->name;
+            session()->put('user_login',$username);
             return redirect('admin/theloai/danhsach');
         }
         else
@@ -42,6 +44,7 @@ class UserController extends Controller
     public function getDangxuatAdmin()
     {
         Auth::logout();
+        session()->forget('user_login');
         return redirect('admin/dangnhap');
     }
 

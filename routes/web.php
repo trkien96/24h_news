@@ -20,7 +20,7 @@ Route::get('admin/dangnhap','UserController@getDangnhapAdmin');
 Route::post('admin/dangnhap','UserController@postDangnhapAdmin');
 Route::get('admin/dangxuat','UserController@getDangxuatAdmin');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::group(['prefix' => 'theloai'], function () {
         Route::get('danhsach','TheLoaiController@getDanhSach');
         Route::get('them','TheLoaiController@getThem');
