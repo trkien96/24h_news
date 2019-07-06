@@ -70,4 +70,6 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/layout', function (){
+    return view('layouts.index');
+});
