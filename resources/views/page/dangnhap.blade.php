@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layout.index')
 
 @section('content')
     <!-- Page Content -->

@@ -9,32 +9,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Laravel Tin Tức</a>
+            <a class="navbar-brand" href="{{route('trangchu')}}">Laravel Tin Tức</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Giới thiệu</a>
+                    <a href="gioithieu">Giới thiệu</a>
                 </li>
                 <li>
-                    <a href="#">Liên hệ</a>
+                    <a href="lienhe">Liên hệ</a>
                 </li>
             </ul>
 
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Nhập từ khóa">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">Tìm</button>
             </form>
 
             <ul class="nav navbar-nav pull-right">
                 <li>
-                    <a href="#">Đăng ký</a>
+                    <a href="dangky">Đăng ký</a>
                 </li>
                 <li>
-                    <a href="#">Đăng nhập</a>
+                    <a href="dangnhap">Đăng nhập</a>
                 </li>
                 <li>
                     <a>
@@ -49,9 +49,6 @@
 
             </ul>
         </div>
-
-
-
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->

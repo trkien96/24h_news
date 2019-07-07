@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layout.index')
 
 @section('content')
     <!-- Page Content -->
@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-8">
                 <div class="panel panel-default">
-				  	<div class="panel-heading">Đăng ký tài khoản</div>
+				  	<div class="panel-heading">Thông tin tài khoản</div>
 				  	<div class="panel-body">
 				    	<form>
 				    		<div>
@@ -21,12 +21,13 @@
 							<div>
 				    			<label>Email</label>
 							  	<input type="email" class="form-control" placeholder="Email" name="email" aria-describedby="basic-addon1"
+							  	disabled
 							  	>
 							</div>
 							<br>	
 							<div>
 								<input type="checkbox" class="" name="checkpassword">
-				    			<label>Nhập mật khẩu</label>
+				    			<label>Đổi mật khẩu</label>
 							  	<input type="password" class="form-control" name="password" aria-describedby="basic-addon1">
 							</div>
 							<br>
@@ -35,7 +36,7 @@
 							  	<input type="password" class="form-control" name="passwordAgain" aria-describedby="basic-addon1">
 							</div>
 							<br>
-							<button type="button" class="btn btn-default">Đăng ký
+							<button type="button" class="btn btn-default">Sửa
 							</button>
 
 				    	</form>

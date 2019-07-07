@@ -10,11 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\TheLoai;
-//Route mặc định
-Route::get('/', function () {
-    return view('admin/login');
-});
+//Phần admin
 
 Route::get('admin/dangnhap','UserController@getDangnhapAdmin');
 Route::post('admin/dangnhap','UserController@postDangnhapAdmin');
@@ -70,6 +66,14 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 });
 Auth::routes();
 
-Route::get('/layout', function (){
-    return view('layouts.index');
+//Phần trang chính
+
+Route::get('/',function (){
+    return redirect()->route('trangchu');
 });
+Route::get('trangchu','PagesController@trangchu')->name('trangchu');
+Route::get('loaitin/{id}/{TenKhongDau}.html','PagesController@loaitin');
+Route::get('chitiet/{id}/{TieuDeKhongDau}.html','PagesController@tintuc');
+Route::get('lienhe','PagesController@lienhe');
+Route::get('gioithieu','PagesController@gioithieu');
+Route::get('taikhoan','PagesController@taikhoan');

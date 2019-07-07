@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator, Input, Redirect;
 use App\TheLoai;
 
 class TheLoaiController extends Controller
@@ -21,7 +22,7 @@ class TheLoaiController extends Controller
 
     public function postThem(Request $request)
     {
-        $this->validate($request,[
+        $validator = Validator::make($request->all(),[
             'TenTL' => 'required|unique:TheLoai,Ten|min:3|max:100'
         ],[
             'TenTL.required' => 'Bạn phải nhập tên thể loại',
@@ -29,6 +30,12 @@ class TheLoaiController extends Controller
             'TenTL.min' => 'Tên thể loại có độ dài từ 3 đến 100 ký tự',
             'TenTL.max' => 'Tên thể loại có độ dài từ 3 đến 100 ký tự',
         ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $theloai = new TheLoai();
         $theloai->Ten = $request->TenTL;

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base href="{{asset()}}">
+    <base href="{{asset('')}}">
     <title>Laravel Khoa Pham</title>
 
     <!-- Bootstrap Core CSS -->
@@ -29,11 +29,11 @@
 
 <body>
 
-@include('layouts.header')
+@include('layout.header')
 
 @yield('content')
 
-@include('layouts.footer)
+@include('layout.footer')
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
