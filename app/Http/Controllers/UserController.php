@@ -9,12 +9,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Uses;
 
 class UserController extends Controller
 {
-    public function getDangnhapAdmin()
-    {
-        return view('admin.login');
-    }
-
-    public function postDangnhapAdmin(Request $request)
+    public function postDangnhap(Request $request)
     {
         $email = $request->old('email');
         $this->validate($request,
@@ -31,21 +26,27 @@ class UserController extends Controller
         ]);
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
         {
-            $username =Auth::user()->name;
-            session()->put('user_login',$username);
-            return redirect('admin/theloai/danhsach');
+            $user =Auth::user();
+            session()->put('user_login',$user);
+            $errorcode=0;
+            $message=$user->name;
+            //return redirect('admin/dashboard');
         }
         else
         {
-            return redirect('admin/dangnhap')->with('loi','Email hoặc mật khẩu không đúng');
+            $errorcode=1;
+            $message="Thông tin đăng nhập không chính xác";
         }
+        $result['errorcode']=$errorcode;
+        $result['message']=$message;
+        return response()->json($result);
     }
 
-    public function getDangxuatAdmin()
+    public function getDangxuat()
     {
         Auth::logout();
         session()->forget('user_login');
-        return redirect('admin/dangnhap');
+        return redirect('trangchu');
     }
 
     public function getDanhSach()

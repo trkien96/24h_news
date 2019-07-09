@@ -22,14 +22,14 @@
 
                     @if(!is_null($user_login))
                         <li>
-                            <a href="#" ><i class="fa fa-user fa-fw"></i> {{$user_login}}</a>
+                            <a href="#" ><i class="fa fa-user fa-fw"></i> {{$user_login->name}}</a>
                         </li>
                         <li>
                             <a href="admin/user/sua/"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="admin/dangxuat"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                            <a href="dangxuat"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
                     @else
                        <li>
@@ -46,28 +46,5 @@
         @include('admin.layout.menu')
         <!-- /.navbar-static-side -->
     </nav>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Đăng nhập</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        Add rows here
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 

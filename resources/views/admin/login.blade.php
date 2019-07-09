@@ -43,7 +43,7 @@
                                 @endforeach
                             </div>
                         @endif
-                        <form role="form" action="admin/dangnhap" method="POST">
+                        <form role="form" action="dangnhap" method="POST">
                             {{csrf_field()}}
                             <fieldset>
                                 <div class="form-group">

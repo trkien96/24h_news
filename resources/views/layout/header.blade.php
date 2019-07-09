@@ -30,26 +30,111 @@
             </form>
 
             <ul class="nav navbar-nav pull-right">
-                <li>
-                    <a href="dangky">Đăng ký</a>
-                </li>
-                <li>
-                    <a href="dangnhap">Đăng nhập</a>
-                </li>
-                <li>
-                    <a>
-                        <span class ="glyphicon glyphicon-user"></span>
-                        Bùi Đức Phú
-                    </a>
-                </li>
+                <?php $user_login = session()->get('user_login');?>
 
-                <li>
-                    <a href="#">Đăng xuất</a>
-                </li>
+                @if(!is_null($user_login))
+                    <li>
+                        <a>
+                            <span class ="glyphicon glyphicon-user"></span>
+                            {{$user_login->name}}
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="dangxuat">Đăng xuất</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#signupModal"><i class="fa fa-sign-out fa-fw"></i> Đăng ký</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-out fa-fw"></i> Đăng nhập</a>
+                    </li>
+                @endif
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="loginForm" role="form" action="dangnhap" method="POST">
+                <div class="modal-header text-center">
+                    <h3 class="modal-title">Đăng nhập</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        {{csrf_field()}}
+                        <fieldset>
+                            <div class="form-group">
+                                <input  type="email" class="form-control" placeholder="Nhập email" name="email" id="email" value="{{ old('email') }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password" id="password" value="{{old('password')}}" >
+                            </div>
+                            <div class="alert alert-danger" id="loginerror"></div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success pull-left">Đăng nhập</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form role="form" action="dangnhap" method="POST">
+                <div class="modal-header text-center">
+                    <h3 class="modal-title">Đăng ký</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        @if (session('loi'))
+                            <div class="alert alert-danger">{{session('loi')}}</div>
+                        @endif
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}
+                                @endforeach
+                            </div>
+                        @endif
+
+                        {{csrf_field()}}
+                        <fieldset>
+                            <div class="form-group">
+                                <input  type="email" class="form-control" placeholder="Nhập email" name="email" value="{{ old('email') }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password" value="{{old('password')}}" >
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success pull-left">Đăng nhập</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

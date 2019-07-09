@@ -26,7 +26,7 @@
                         <div class="col-md-9">
                             <h3>{{$tin->TieuDe}}</h3>
                             <p>{{$tin->TomTat}}</p>
-                            <a class="btn btn-primary" href="chitiet/{{$tin->id}}">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="btn btn-primary" href="chitiet/{{$tin->id}}/{{$tin->TieuDeKhongDau}}.html">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
                         </div>
                         <div class="break"></div>
                     </div>

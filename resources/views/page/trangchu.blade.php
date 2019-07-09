@@ -39,7 +39,7 @@
                             ?>
                             <div class="col-md-8 border-right">
                                 <div class="col-md-5">
-                                    <a href="chitiet/{{$firstNew['id']}}">
+                                    <a href="chitiet/{{$firstNew->id}}/{{$firstNew->TieuDeKhongDau}}.html">
                                         <img width="100%" class="img-responsive" src="upload/tintuc/{{$firstNew['Hinh']}}" alt="">
                                     </a>
                                 </div>
@@ -47,14 +47,14 @@
                                 <div class="col-md-7">
                                     <h3>{{$firstNew->TieuDe}}</h3>
                                     <p>{{$firstNew->TomTat}}</p>
-                                    <a class="btn btn-primary" href="chitiet/{{$firstNew->id}}">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                    <a class="btn btn-primary" href="chitiet/{{$firstNew->id}}/{{$firstNew->TieuDeKhongDau}}.html">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
                                 </div>
 
                             </div>
 
                             <div class="col-md-4">
                                 @foreach($news->all() as $tin)
-                                    <a href="chitiet/{{$tin->id}}">
+                                    <a href="chitiet/{{$tin->id}}/{{$tin->TieuDeKhongDau}}.html">
                                         <h4>
                                             <span class="glyphicon glyphicon-list-alt"></span>
                                             {{$tin->TieuDe}}

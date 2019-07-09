@@ -12,11 +12,13 @@
 */
 //Phần admin
 
-Route::get('admin/dangnhap','UserController@getDangnhapAdmin');
-Route::post('admin/dangnhap','UserController@postDangnhapAdmin');
-Route::get('admin/dangxuat','UserController@getDangxuatAdmin');
+Route::post('dangnhap','UserController@postDangnhap');
+Route::get('dangxuat','UserController@getDangxuat');
 
 Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
+    Route::get('dashboard', function () {
+        return view('admin.dashboard');
+    });
     Route::group(['prefix' => 'theloai'], function () {
         Route::get('danhsach','TheLoaiController@getDanhSach');
         Route::get('them','TheLoaiController@getThem');
