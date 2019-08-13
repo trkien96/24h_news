@@ -24,12 +24,12 @@ class AdminLoginMiddleware
             }
             else
             {
-                return redirect('admin/dangnhap');
+                return redirect('dangnhap');
             }
         }
         else
         {
-            return redirect('admin/dangnhap');
+            return redirect('dangnhap');
         }
     }
 }
