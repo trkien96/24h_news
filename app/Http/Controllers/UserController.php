@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use phpDocumentor\Reflection\DocBlock\Tags\Uses;
+use Hash;
 
 class UserController extends Controller
 {
+    public function getDangnhap()
+    {
+        return view('page.dangnhap');
+    }
+
     public function postDangnhap(Request $request)
     {
         $email = $request->old('email');
@@ -28,18 +33,52 @@ class UserController extends Controller
         {
             $user =Auth::user();
             session()->put('user_login',$user);
-            $errorcode=0;
-            $message=$user->name;
-            //return redirect('admin/dashboard');
+            if($user->quyen == 1)
+            {
+                return redirect('admin/dashboard');
+            }
+            else
+            {
+                return redirect('trangchu');
+            }
         }
         else
         {
-            $errorcode=1;
-            $message="Thông tin đăng nhập không chính xác";
+            return redirect()->back()->with('loi','Thông tin đăng nhập không chính xác');
         }
-        $result['errorcode']=$errorcode;
-        $result['message']=$message;
-        return response()->json($result);
+    }
+
+    public function getDangky()
+    {
+        return view('page.dangky');
+    }
+
+    public function postDangky(Request $request)
+    {
+        $this->validate($request,
+            [
+                'name'=>'required',
+                'email'=>'required|email|unique:users,email',
+                'password'=>'required:min:6|max:20',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'name.required'=>'Bạn phải nhập họ tên',
+                'email.required'=>'Bạn phải nhập email',
+                'email.email'=>'Email không đúng định dạng',
+                'email.unique'=>'Email đã trùng, vui lòng nhập email khác',
+                'password.required'=>'Bạn phải nhập mật khẩu',
+                'password.min'=>'Mật khẩu phải chứa ít nhất 6 ký tự',
+                'password.max'=>'Mật khẩu chứa tối đa 20 ký tự',
+                're_password.required'=>'Bạn phải nhập lại mật khẩu',
+                're_password.same'=>'Mật khẩu không trùng khớp'
+            ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect('dangnhap');
     }
 
     public function getDangxuat()
@@ -84,7 +123,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->password = Hash::make($request->password);
         $user->quyen = $request->level;
         $user->save();
         return redirect('admin/user/them')->with('thongbao','Thêm user thành công');
@@ -122,7 +161,7 @@ class UserController extends Controller
                 're-password.required'=>'Bạn phải nhập lại mật khẩu',
                 're-password.same'=>'Mật khẩu phải giống nhau',
             ]);
-            $user->password = bcrypt($request->password);
+            $user->password = Hash::make($request->password);
         }
         $user->quyen = $request->level;
         $user->save();

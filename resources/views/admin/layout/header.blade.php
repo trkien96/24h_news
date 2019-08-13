@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">TRANG QUẢN TRỊ</a>
+            <a class="navbar-brand" href="{{route('dashboard')}}">TRANG QUẢN TRỊ</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -25,7 +25,7 @@
                             <a href="#" ><i class="fa fa-user fa-fw"></i> {{$user_login->name}}</a>
                         </li>
                         <li>
-                            <a href="admin/user/sua/"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
+                            <a href="admin/user/sua/{{$user_login->id}}"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -33,7 +33,7 @@
                         </li>
                     @else
                        <li>
-                           <a href="#" data-toggle="modal" data-target="#modelId"><i class="fa fa-sign-out fa-fw"></i> Đăng nhập</a>
+                           <a href="dangnhap"><i class="fa fa-sign-out fa-fw"></i> Đăng nhập</a>
                        </li>
                     @endif
                 </ul>

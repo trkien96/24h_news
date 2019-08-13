@@ -1,7 +1,7 @@
 <!-- slider -->
 <div class="row carousel-holder">
     <div class="col-md-12">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height: 386px;overflow: hidden">
             <ol class="carousel-indicators">
                 @foreach($slide as $sl)
                     <li data-target="#carousel-example-generic" data-slide-to="{{$loop->index}}"

@@ -7,7 +7,7 @@
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
     <base href="{{asset('')}}">
-    <title>Admin - Khoa Phạm</title>
+    <title>Trang quản trị</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,8 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <link href="image/logo.png" rel="icon">
 </head>
 
 <body>

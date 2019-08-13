@@ -39,15 +39,15 @@
                             ?>
                             <div class="col-md-8 border-right">
                                 <div class="col-md-5">
-                                    <a href="chitiet/{{$firstNew->id}}/{{$firstNew->TieuDeKhongDau}}.html">
+                                    <a href="chitiet/{{$firstNew['id']}}/{{$firstNew['TieuDeKhongDau']}}.html">
                                         <img width="100%" class="img-responsive" src="upload/tintuc/{{$firstNew['Hinh']}}" alt="">
                                     </a>
                                 </div>
 
                                 <div class="col-md-7">
-                                    <h3>{{$firstNew->TieuDe}}</h3>
-                                    <p>{{$firstNew->TomTat}}</p>
-                                    <a class="btn btn-primary" href="chitiet/{{$firstNew->id}}/{{$firstNew->TieuDeKhongDau}}.html">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                    <h3>{{$firstNew['TieuDe']}}</h3>
+                                    <p>{{$firstNew['TomTat']}}</p>
+                                    <a class="btn btn-primary" href="chitiet/{{$firstNew['id']}}/{{$firstNew['TieuDeKhongDau']}}.html">Xem chi tiết <span class="glyphicon glyphicon-chevron-right"></span></a>
                                 </div>
 
                             </div>

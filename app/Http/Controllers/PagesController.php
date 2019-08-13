@@ -31,6 +31,11 @@ class PagesController extends Controller
         return view('page.lienhe');
     }
 
+    function gioithieu()
+    {
+        return view('page.gioithieu');
+    }
+
     function loaitin($id)
     {
         $loaitin = LoaiTin::find($id);
